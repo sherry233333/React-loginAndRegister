@@ -1,0 +1,14 @@
+
+.button{
+    display: inline-block;
+    width: 65px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #43ca89;
+    color:rgb(255, 251, 240);
+    cursor: pointer;
+    font-size: 15px;
+    margin-right:20px;
+}

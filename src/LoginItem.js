@@ -13,13 +13,10 @@ class LoginItem extends React.Component{
             ]
         }
         this.check=this.check.bind(this);
+        this.change=this.change.bind(this);
     }
 
     check(e){
-        //get为true表示需要获取值给父组件
-        if(this.props.data.get){
-            this.props.getVal(this.props.data.id,e.target.value);
-        }
         if(this.state.rule!=''){
             //该字段需要匹配正则来判断输入的值是否符合要求
             let cresult=(this.state.rule).test(e.target.value);
@@ -40,13 +37,17 @@ class LoginItem extends React.Component{
         }
     }
 
+    change(e){
+        this.props.getVal(this.props.data.id,e.target.value);
+    }
 
     render(){
-        const {name,type,check:checkr,error:err}=this.props.data;
+        const {name,type,check:checkr,error:err,value}=this.props.data;
+      
         return(
             <div className='wrapper'>
                 <span className='name'>{name}</span>
-                <input className='input' type={type} onBlur={this.check}></input>
+                <input className='input' type={type} value={value} onChange={this.change} onBlur={this.check}></input>
                 {checkr==null? null: <img className='checkImg' alt='验证结果' src={checkr?correct:error}></img>}
                 {checkr==null? null: checkr ?null:<span className='errorInfo'>{err}</span>}
             </div>
